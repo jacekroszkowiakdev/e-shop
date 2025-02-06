@@ -1,3 +1,3 @@
 export interface ThemeState {
-    darkmode: boolean;
+    darkMode: boolean;
 }
