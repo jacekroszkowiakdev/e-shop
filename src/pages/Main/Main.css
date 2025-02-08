@@ -1,0 +1,12 @@
+h1 {
+    font-size: 4em;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.image-board {
+    width: 80vw;
+    align-items: center;
+    margin: 0 auto;
+}
