@@ -41,7 +41,7 @@ const LazyImage = ({
 
     return (
         <div className="lazy-image-container">
-            {!loaded && <Spinner />}{" "}
+            {!loaded ? <Spinner /> : null}
             <img
                 ref={imgRef}
                 className="lazy-image"

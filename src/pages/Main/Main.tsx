@@ -1,25 +1,53 @@
 import "./Main.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import LazyImage from "../../components/LazyImage/LazyImage";
+import Spinner from "../../components/Spinner/Spinner";
 
 const getRandomInt = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;
 
+const generateImages = (count: number) =>
+    Array.from(
+        { length: count },
+        () =>
+            `https://picsum.photos/400/600?blur=2&random=${getRandomInt(
+                1,
+                1000
+            )}`
+    );
+
 const MainPage = () => {
-    const [images, setImages] = useState<string[]>([]);
-    const loadImages = () =>
-        `https://picsum.photos/400/600?blur=2&random=${getRandomInt(1, 150)}`;
+    const [images, setImages] = useState<string[]>(generateImages(11));
+    const [isLoading, setIsLoading] = useState(false);
+    const observerRef = useRef<HTMLDivElement | null>(null);
+
+    const loadMoreImages = useCallback(() => {
+        if (isLoading) return;
+        setIsLoading(true);
+
+        setTimeout(() => {
+            setImages((prevImages) => [...prevImages, ...generateImages(11)]);
+            setIsLoading(false);
+        }, 1500);
+    }, [isLoading]);
 
     useEffect(() => {
-        // Generate 30 random images on mount
-        setImages(Array.from({ length: 30 }, () => loadImages()));
-    }, []);
+        const observerOptions = {
+            root: null,
+            rootMargin: "0px",
+            threshold: 1.0,
+        };
+        const observer = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting && !isLoading) {
+                loadMoreImages();
+                console.log("Loading more images...");
+            }
+        }, observerOptions);
 
-    //TODO: implement array insert of another bath of images on scroll
+        if (observerRef.current) observer.observe(observerRef.current);
 
-    useEffect(() => {
-        console.log("Updated Images:", images);
-    }, [images]);
+        return () => observer.disconnect();
+    }, [isLoading, loadMoreImages]);
 
     return (
         <div>
@@ -32,6 +60,11 @@ const MainPage = () => {
                         alt={`Product ${index + 1}`}
                     />
                 ))}
+            </div>
+
+            {/* ✅ Intersection Observer Target */}
+            <div ref={observerRef} className="loading-trigger">
+                {isLoading ? <Spinner /> : null}
             </div>
         </div>
     );
