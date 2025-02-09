@@ -1,6 +1,7 @@
 import "./LazyImage.css";
 import { useState, useEffect, useRef } from "react";
 import { ImageProps } from "../../ts/interfaces/LazyImage";
+import Spinner from "../Spinner/Spinner";
 
 const LazyImage = ({
     src,
@@ -15,48 +16,46 @@ const LazyImage = ({
 
     useEffect(() => {
         const observerOptions = {
-            root: document.querySelector("#scrollArea"),
+            root: null,
             rootMargin: "0px",
-            threshold: 1.0,
+            threshold: 0.2,
         };
-        const observer = new IntersectionObserver(([entry]) => {
+
+        const observer = new IntersectionObserver(([entry], observer) => {
             if (entry.isIntersecting) {
                 const img = new Image();
                 img.src = src;
                 img.onload = () => {
                     setImageSrc(src);
                     setLoaded(true);
+                    observer.unobserve(entry.target);
                 };
                 console.log(`Image ${src} is now visible`);
             }
         }, observerOptions);
 
-        const currentImgRef = imgRef.current;
+        if (imgRef.current) observer.observe(imgRef.current);
 
-        if (currentImgRef) observer.observe(currentImgRef);
-
-        return () => {
-            if (currentImgRef) observer.unobserve(currentImgRef);
-        };
+        return () => observer.disconnect();
     }, [src]);
 
     return (
-        <img
-            ref={imgRef}
-            className="lazy-image"
-            src={imageSrc}
-            alt={alt}
-            width={width}
-            height={height}
-            style={{
-                opacity: loaded ? 1 : 0.3,
-                transition: "opacity 0.5s ease-in-out",
-            }}
-        />
+        <div className="lazy-image-container">
+            {!loaded && <Spinner />}{" "}
+            <img
+                ref={imgRef}
+                className="lazy-image"
+                src={imageSrc}
+                alt={alt}
+                width={width}
+                height={height}
+                style={{
+                    opacity: loaded ? 1 : 0,
+                    transition: "opacity 1.2s ease-in-out",
+                }}
+            />
+        </div>
     );
 };
-// TODO: implement placeholder image
-// TODO: implement loading spinner
-// TODO: code splitting: https://www.youtube.com/watch?v=JU6sl_yyZqs
 
 export default LazyImage;

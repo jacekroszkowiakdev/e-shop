@@ -12,16 +12,7 @@ const MainPage = () => {
 
     useEffect(() => {
         // Generate 30 random images on mount
-        setImages(
-            Array.from(
-                { length: 30 },
-                () =>
-                    `https://picsum.photos/400/600?blur=2&random=${getRandomInt(
-                        1,
-                        150
-                    )}`
-            )
-        );
+        setImages(Array.from({ length: 30 }, () => loadImages()));
     }, []);
 
     //TODO: implement array insert of another bath of images on scroll
@@ -33,39 +24,6 @@ const MainPage = () => {
     return (
         <div>
             <h1>Welcome to E-Shop</h1>
-            <div className="image-board">
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-                <LazyImage src={loadImages()} />
-            </div>
-
             <div className="image-board">
                 {images.map((src, index) => (
                     <LazyImage
