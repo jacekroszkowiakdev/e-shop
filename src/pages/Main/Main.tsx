@@ -1,71 +1,67 @@
 import "./Main.css";
-import { useEffect, useState, useCallback, useRef } from "react";
-import LazyImage from "../../components/LazyImage/LazyImage";
-import Spinner from "../../components/Spinner/Spinner";
+import { useState } from "react";
+import ProductCard from "../../components/ProductCard/ProductCard";
+import ProductModal from "../../components/ProductModal/ProductModal";
 
-const getRandomInt = (min: number, max: number) =>
-    Math.floor(Math.random() * (max - min + 1)) + min;
-
-const generateImages = (count: number) =>
-    Array.from(
-        { length: count },
-        () =>
-            `https://picsum.photos/400/600?blur=2&random=${getRandomInt(
-                1,
-                1000
-            )}`
-    );
+const fakeProducts = [
+    {
+        id: 1,
+        image: "https://picsum.photos/200/300",
+        title: "Stylish Jacket",
+        description: "A comfortable and stylish jacket for all seasons.",
+        price: 49.99,
+        category: "Clothing",
+        rating: 4.9,
+        onClick: () => {},
+    },
+    {
+        onClick: () => {},
+        id: 2,
+        image: "https://picsum.photos/200/300",
+        title: "Running Shoes",
+        description: "Lightweight running shoes with great comfort.",
+        price: 79.99,
+        category: "Footwear",
+        rating: 4.5,
+    },
+    {
+        id: 3,
+        image: "https://picsum.photos/200/300",
+        title: "Wireless Headphones",
+        description: "High-quality sound with active noise cancellation.",
+        price: 129.99,
+        onClick: () => {},
+    },
+];
 
 const MainPage = () => {
-    const [images, setImages] = useState<string[]>(generateImages(11));
-    const [isLoading, setIsLoading] = useState(false);
-    const observerRef = useRef<HTMLDivElement | null>(null);
-
-    const loadMoreImages = useCallback(() => {
-        if (isLoading) return;
-        setIsLoading(true);
-
-        setTimeout(() => {
-            setImages((prevImages) => [...prevImages, ...generateImages(11)]);
-            setIsLoading(false);
-        }, 1500);
-    }, [isLoading]);
-
-    useEffect(() => {
-        const observerOptions = {
-            root: null,
-            rootMargin: "0px",
-            threshold: 1.0,
-        };
-        const observer = new IntersectionObserver(([entry]) => {
-            if (entry.isIntersecting && !isLoading) {
-                loadMoreImages();
-                console.log("Loading more images...");
-            }
-        }, observerOptions);
-
-        if (observerRef.current) observer.observe(observerRef.current);
-
-        return () => observer.disconnect();
-    }, [isLoading, loadMoreImages]);
+    const [selectedProduct, setSelectedProduct] = useState<
+        null | (typeof fakeProducts)[0]
+    >(null);
 
     return (
         <div>
             <h1>Welcome to E-Shop</h1>
-            <div className="image-board">
-                {images.map((src, index) => (
-                    <LazyImage
-                        key={index}
-                        src={src}
-                        alt={`Product ${index + 1}`}
+            <div className="product-grid">
+                {fakeProducts.map((product) => (
+                    <ProductCard
+                        id={product.id}
+                        key={product.id}
+                        image={product.image}
+                        title={product.title}
+                        description={product.description}
+                        price={product.price}
+                        onClick={() => setSelectedProduct(product)}
                     />
                 ))}
             </div>
 
-            {/* ✅ Intersection Observer Target */}
-            <div ref={observerRef} className="loading-trigger">
-                {isLoading ? <Spinner /> : null}
-            </div>
+            {selectedProduct && (
+                <ProductModal
+                    product={selectedProduct}
+                    onClose={() => setSelectedProduct(null)}
+                />
+            )}
         </div>
     );
 };
