@@ -34,10 +34,12 @@
     padding: 8px 12px;
     cursor: pointer;
     border-radius: 5px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .close-button:hover {
     background: #e63946;
+    transform: scale(1.1);
 }
 
 .modal-image {

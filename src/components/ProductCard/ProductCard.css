@@ -9,8 +9,9 @@
 
 .product-card:hover {
     background: rgb(218, 208, 208);
-    transition: 0.9s ease-in-out;
+    transition: 0.3s ease-in-out;
     box-shadow: 0 0 10px rgba(218, 208, 208, 0.5);
+    transform: translateY(-2%) scale(1.08);
 }
 
 .product-price {

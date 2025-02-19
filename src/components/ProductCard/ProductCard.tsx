@@ -8,6 +8,7 @@ const ProductCard = ({
     image,
     onClick,
 }: Product) => {
+    //TODO: add dark mode
     return (
         <div className="product-card" onClick={onClick}>
             <img src={image} alt={title} className="product-image" />
