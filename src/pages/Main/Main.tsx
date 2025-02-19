@@ -2,6 +2,7 @@ import "./Main.css";
 import { useState } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/ProductModal/ProductModal";
+import LiveSearch from "../../components/LiveSearch/LiveSearch";
 
 const fakeProducts = [
     {
@@ -42,6 +43,7 @@ const MainPage = () => {
     return (
         <div>
             <h1>Welcome to E-Shop</h1>
+            <LiveSearch />
             <div className="product-grid">
                 {fakeProducts.map((product) => (
                     <ProductCard

@@ -2,8 +2,8 @@ import "./App.css";
 import { useEffect, lazy, Suspense } from "react";
 import { RootState } from "./redux/store";
 import { useSelector } from "react-redux";
-import DarkModeToggle from "./components/DarkModeToggle/DarkModeToggle";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import DarkModeToggle from "./components/DarkModeToggle/DarkModeToggle";
 import Main from "./pages/Main/Main";
 import Spinner from "./components/Spinner/Spinner";
 

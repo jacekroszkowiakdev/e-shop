@@ -51,7 +51,7 @@ const Gallery = () => {
 
     return (
         <div>
-            <h1>Welcome to E-Shop</h1>
+            <h1>Products Gallery</h1>
             <div className="image-board">
                 {images.map((src, index) => (
                     <LazyImage

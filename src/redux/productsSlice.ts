@@ -3,7 +3,8 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { Product } from "../ts/types/Product";
 import { ProductsState } from "../ts/interfaces/ProductsState";
 
-const API_URL = import.meta.env.API_URL as string;
+const API_URL = import.meta.env.VITE_API_URL as string;
+console.log("API URL:", API_URL); // ✅ Check if this prints the correct URL
 
 const initialState: ProductsState = {
     products: [],
@@ -18,6 +19,7 @@ export const fetchProducts = createAsyncThunk<
 >("products/fetchProducts", async (_, { rejectWithValue }) => {
     try {
         const response = await axios.get<Product[]>(API_URL);
+
         return response.data;
     } catch (error) {
         const err = error as AxiosError<string>;
