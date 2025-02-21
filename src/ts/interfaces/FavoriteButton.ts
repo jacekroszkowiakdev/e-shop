@@ -1,4 +1,4 @@
-export interface LikeButtonProps {
+export interface FavoriteButtonProps {
     initialLiked?: boolean;
     onToggle?: (liked: boolean) => void;
     size?: number;

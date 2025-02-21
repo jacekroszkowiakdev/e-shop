@@ -1,14 +1,14 @@
 import { useState } from "react";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import { LikeButtonProps } from "../../ts/interfaces/LikeButton.props";
+import { FavoriteButtonProps } from "../../ts/interfaces/FavoriteButton";
 
-const LikeButton = ({
+const FavoriteButton = ({
     initialLiked = false,
     onToggle,
     size = 24,
     color = "black",
     likedColor = "red",
-}: LikeButtonProps) => {
+}: FavoriteButtonProps) => {
     const [liked, setLiked] = useState(initialLiked);
 
     const handleClick = () => {
@@ -31,4 +31,4 @@ const LikeButton = ({
     );
 };
 
-export default LikeButton;
+export default FavoriteButton;

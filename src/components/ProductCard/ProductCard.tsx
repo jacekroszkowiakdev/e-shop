@@ -1,6 +1,6 @@
 import "./ProductCard.css";
 import { Product } from "../../ts/types/Product";
-import LikeButton from "../LikeButton/LikeButton";
+import FavoriteButton from "../FavoriteButton/FavoriteButton";
 
 const ProductCard = ({
     price,
@@ -19,7 +19,7 @@ const ProductCard = ({
                 <div className="product-footer">
                     <span className="product-price">${price.toFixed(2)}</span>
                     {/* <button className="add-to-cart">Add to Cart</button> */}
-                    <LikeButton />
+                    <FavoriteButton />
                 </div>
             </div>
         </div>
