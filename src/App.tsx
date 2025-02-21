@@ -1,4 +1,5 @@
 import "./App.css";
+import { IoCartOutline } from "react-icons/io5";
 import { useEffect, lazy, Suspense } from "react";
 import { RootState } from "./redux/store";
 import { useSelector } from "react-redux";
@@ -10,6 +11,10 @@ import Spinner from "./components/Spinner/Spinner";
 const LazyGallery = lazy(() => import("./pages/Gallery/Gallery"));
 
 function App() {
+    const cartCount = useSelector(
+        (state: RootState) => state.cart.items.length
+    );
+
     const darkMode = useSelector((state: RootState) => state.theme.darkMode);
 
     useEffect(() => {
@@ -22,10 +27,14 @@ function App() {
                 <h1>Fake Shop</h1>
                 <DarkModeToggle />
                 <nav>
-                    {/* //TODO: make navar responsive, add hamburger menu for small
+                    {/* //TODO: create responsive Navbar component, add hamburger menu for small
                     screens */}
                     <Link to="/">Home</Link>
                     <Link to="/gallery">Gallery</Link>
+                    <div className="cart-icon">
+                        <IoCartOutline size={24} />
+                        <span className="cart-count">{cartCount}</span>
+                    </div>
                 </nav>
                 <Suspense fallback={<Spinner />}>
                     <Routes>

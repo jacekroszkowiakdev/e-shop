@@ -4,7 +4,6 @@ import { Product } from "../ts/types/Product";
 import { ProductsState } from "../ts/interfaces/ProductsState";
 
 const API_URL = import.meta.env.VITE_API_URL as string;
-console.log("API URL:", API_URL); // ✅ Check if this prints the correct URL
 
 const initialState: ProductsState = {
     products: [],

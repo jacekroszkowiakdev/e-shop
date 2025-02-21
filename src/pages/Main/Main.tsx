@@ -5,7 +5,6 @@ import ProductModal from "../../components/ProductModal/ProductModal";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store";
 import { fetchProducts } from "../../redux/productsSlice";
-// import Spinner from "../Spinner/Spinner";
 import LiveSearch from "../../components/LiveSearch/LiveSearch";
 
 const MainPage = () => {

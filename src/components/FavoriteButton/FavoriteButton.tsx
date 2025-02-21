@@ -1,3 +1,4 @@
+import "./FavoriteButton.css";
 import { useState } from "react";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
 import { FavoriteButtonProps } from "../../ts/interfaces/FavoriteButton";
@@ -18,10 +19,7 @@ const FavoriteButton = ({
     };
 
     return (
-        <button
-            onClick={handleClick}
-            style={{ background: "none", border: "none", cursor: "pointer" }}
-        >
+        <button className="fav-button" onClick={handleClick}>
             {liked ? (
                 <IoHeart size={size} color={likedColor} />
             ) : (

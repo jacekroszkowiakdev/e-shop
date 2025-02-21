@@ -15,11 +15,16 @@ const ProductCard = ({
             <img src={image} alt={title} className="product-image" />
             <div className="product-details">
                 <h3 className="product-title">{title}</h3>
+
                 <p className="product-description">{description}</p>
                 <div className="product-footer">
-                    <span className="product-price">${price.toFixed(2)}</span>
-                    {/* <button className="add-to-cart">Add to Cart</button> */}
-                    <FavoriteButton />
+                    <span className="product-price">
+                        Price:{" "}
+                        <span className="product-price-amount">
+                            {price.toFixed(2)} $
+                        </span>
+                    </span>
+                    <FavoriteButton size={45} color="gray" likedColor="red" />
                 </div>
             </div>
         </div>
