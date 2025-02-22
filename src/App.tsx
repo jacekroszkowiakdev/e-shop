@@ -1,12 +1,12 @@
 import "./App.css";
 import { IoCartOutline } from "react-icons/io5";
 import { useEffect, lazy, Suspense } from "react";
-import { RootState } from "./redux/store";
+import { RootState } from "./store/store";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
-import DarkModeToggle from "./components/DarkModeToggle/DarkModeToggle";
+import DarkModeToggle from "./components/ui/DarkModeToggle/DarkModeToggle";
 import Main from "./pages/Main/Main";
-import Spinner from "./components/Spinner/Spinner";
+import Spinner from "./components/ui/Spinner/Spinner";
 
 const LazyGallery = lazy(() => import("./pages/Gallery/Gallery"));
 

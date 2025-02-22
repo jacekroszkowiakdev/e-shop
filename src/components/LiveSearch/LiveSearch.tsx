@@ -1,9 +1,9 @@
 import "./LiveSearch.css";
 import { useState, useEffect, useRef, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store";
-import { fetchProducts } from "../../redux/productsSlice";
-import Spinner from "../Spinner/Spinner";
+import { AppDispatch, RootState } from "../../store/store";
+import { fetchProducts } from "../../store/productsSlice";
+import Spinner from "../ui/Spinner/Spinner";
 
 const LiveSearch = () => {
     const dispatch = useDispatch<AppDispatch>();

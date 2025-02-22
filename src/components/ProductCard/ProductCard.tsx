@@ -1,6 +1,6 @@
 import "./ProductCard.css";
 import { Product } from "../../ts/types/Product";
-import FavoriteButton from "../FavoriteButton/FavoriteButton";
+import FavoriteButton from "../ui/FavoriteButton/FavoriteButton";
 
 const ProductCard = ({
     price,

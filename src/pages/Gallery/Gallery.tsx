@@ -1,7 +1,7 @@
 import "./Gallery.css";
 import { useEffect, useState, useCallback, useRef } from "react";
 import LazyImage from "../../components/LazyImage/LazyImage";
-import Spinner from "../../components/Spinner/Spinner";
+import Spinner from "../../components/ui/Spinner/Spinner";
 
 const getRandomInt = (min: number, max: number) =>
     Math.floor(Math.random() * (max - min + 1)) + min;

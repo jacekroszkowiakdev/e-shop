@@ -1,7 +1,7 @@
 import "./LazyImage.css";
 import { useState, useEffect, useRef } from "react";
 import { ImageProps } from "../../ts/interfaces/LazyImage";
-import Spinner from "../Spinner/Spinner";
+import Spinner from "../ui/Spinner/Spinner";
 
 const LazyImage = ({
     src,

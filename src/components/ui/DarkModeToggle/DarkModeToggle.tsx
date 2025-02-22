@@ -1,7 +1,7 @@
 import "./DarkModeToggle.css";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/store";
-import { toggleDarkMode } from "../../redux/themeSlice";
+import { RootState } from "../../../store/store";
+import { toggleDarkMode } from "../../../store/themeSlice";
 
 const DarkModeToggle = () => {
     const dispatch = useDispatch();

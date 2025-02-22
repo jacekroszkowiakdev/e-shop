@@ -3,8 +3,8 @@ import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/ProductModal/ProductModal";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../redux/store";
-import { fetchProducts } from "../../redux/productsSlice";
+import { AppDispatch, RootState } from "../../store/store";
+import { fetchProducts } from "../../store/productsSlice";
 import LiveSearch from "../../components/LiveSearch/LiveSearch";
 
 const MainPage = () => {

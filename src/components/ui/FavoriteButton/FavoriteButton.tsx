@@ -1,7 +1,7 @@
 import "./FavoriteButton.css";
 import { useState } from "react";
 import { IoHeartOutline, IoHeart } from "react-icons/io5";
-import { FavoriteButtonProps } from "../../ts/interfaces/FavoriteButton";
+import { FavoriteButtonProps } from "../../../ts/interfaces/FavoriteButton";
 
 const FavoriteButton = ({
     initialLiked = false,
