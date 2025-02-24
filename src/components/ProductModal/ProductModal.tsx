@@ -1,16 +1,11 @@
 import "./ProductModal.css";
-import { ProductCardProps } from "../../interfaces/Product";
-
-interface ProductModalProps {
-    product: ProductCardProps | null;
-    onClose: () => void;
-}
+import { ProductModalProps } from "../../interfaces/ProductModalProps.ts";
 
 const ProductModal = ({ product, onClose }: ProductModalProps) => {
     if (!product) return null;
 
     return (
-        <div className="modal-overlay" onClick={onClose}>
+        <div className="modal-overlay">
             <div
                 className="modal-content"
                 onClick={(evt) => evt.stopPropagation()}

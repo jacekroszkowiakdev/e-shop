@@ -1,5 +1,4 @@
 import "./AddToCartButton.css";
-import { IoCartOutline } from "react-icons/io5";
 import { AddToCartButtonProps } from "../../../interfaces/AddToCartButtonProps";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -27,18 +26,28 @@ const AddToCartButton = ({
     };
 
     return (
-        <div>
-            {itemQuantity > 0}
-            <button onClick={() => item && dispatch(decreaseQuantity(item.id))}>
-                -
-            </button>
+        <div className="add-to-cart">
+            {itemQuantity > 0 && (
+                <button
+                    className="quantity-button"
+                    onClick={() => item && dispatch(decreaseQuantity(item.id))}
+                >
+                    -
+                </button>
+            )}
+
             <button className="add-to-cart-button" onClick={handleClick}>
-                <IoCartOutline />
                 {itemQuantity}
             </button>
-            <button onClick={() => item && dispatch(increaseQuantity(item.id))}>
-                +
-            </button>
+
+            {itemQuantity > 0 && (
+                <button
+                    className="quantity-button"
+                    onClick={() => item && dispatch(increaseQuantity(item.id))}
+                >
+                    +
+                </button>
+            )}
         </div>
     );
 };

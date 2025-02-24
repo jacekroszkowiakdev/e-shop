@@ -1,11 +1,11 @@
 import "./Main.css";
-import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import ProductModal from "../../components/ProductModal/ProductModal";
+import LiveSearch from "../../components/LiveSearch/LiveSearch";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { fetchProducts } from "../../store/productsSlice";
-import LiveSearch from "../../components/LiveSearch/LiveSearch";
 
 const MainPage = () => {
     const dispatch = useDispatch<AppDispatch>();
@@ -39,6 +39,7 @@ const MainPage = () => {
                         description={product.description}
                         price={product.price}
                         onClick={() => setSelectedProduct(product)}
+                        quantity={0}
                     />
                 ))}
             </div>

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from "axios";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { ProductCardProps } from "../interfaces/Product";
+import { ProductCardProps } from "../interfaces/ProductCardProps";
 import { ProductsState } from "../interfaces/ProductsState";
 
 const API_URL = import.meta.env.VITE_API_URL as string;

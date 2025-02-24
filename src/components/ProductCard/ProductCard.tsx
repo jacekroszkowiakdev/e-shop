@@ -1,5 +1,5 @@
 import "./ProductCard.css";
-import { ProductCardProps } from "../../interfaces/Product";
+import { ProductCardProps } from "../../interfaces/ProductCardProps";
 import FavoriteButton from "../ui/FavoriteButton/FavoriteButton";
 import AddToCartButton from "../ui/AddToCartButton/AddToCartButton";
 
@@ -14,6 +14,7 @@ const ProductCard = ({
     return (
         <div className="product-card" onClick={onClick}>
             <img src={image} alt={title} className="product-image" />
+            <FavoriteButton size={45} color="gray" likedColor="red" />
             <div className="product-details">
                 <h3 className="product-title">{title}</h3>
 
@@ -34,7 +35,6 @@ const ProductCard = ({
                             quantity: 1,
                         }}
                     />
-                    <FavoriteButton size={45} color="gray" likedColor="red" />
                 </div>
             </div>
         </div>
