@@ -1,6 +1,6 @@
-import { Product } from "../types/Product.ts";
+import { ProductCardProps } from "./Product.ts";
 export interface ProductsState {
-    products: Product[];
+    products: ProductCardProps[];
     status: "idle" | "loading" | "succeeded" | "failed";
 
     error: string | undefined;

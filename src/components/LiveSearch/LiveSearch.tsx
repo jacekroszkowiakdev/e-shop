@@ -29,9 +29,7 @@ const LiveSearch = () => {
         }
     }, [dispatch, products, status, error]);
 
-    useEffect(() => {
-        console.log("Updated products:", products);
-    }, [products]);
+    useEffect(() => {}, [products]);
 
     // Optimized filtering with `useMemo`
     const filteredProducts = useMemo(() => {

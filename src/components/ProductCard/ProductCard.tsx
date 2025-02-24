@@ -1,6 +1,7 @@
 import "./ProductCard.css";
-import { Product } from "../../ts/types/Product";
+import { ProductCardProps } from "../../interfaces/Product";
 import FavoriteButton from "../ui/FavoriteButton/FavoriteButton";
+import AddToCartButton from "../ui/AddToCartButton/AddToCartButton";
 
 const ProductCard = ({
     price,
@@ -8,7 +9,7 @@ const ProductCard = ({
     description,
     image,
     onClick,
-}: Product) => {
+}: ProductCardProps) => {
     //TODO: add dark mode
     return (
         <div className="product-card" onClick={onClick}>
@@ -24,6 +25,15 @@ const ProductCard = ({
                             {price.toFixed(2)} $
                         </span>
                     </span>
+                    <AddToCartButton
+                        product={{
+                            id: title,
+                            price,
+                            title,
+                            image,
+                            quantity: 1,
+                        }}
+                    />
                     <FavoriteButton size={45} color="gray" likedColor="red" />
                 </div>
             </div>

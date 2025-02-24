@@ -1,7 +1,7 @@
 import axios, { AxiosError } from "axios";
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { Product } from "../ts/types/Product";
-import { ProductsState } from "../ts/interfaces/ProductsState";
+import { ProductCardProps } from "../interfaces/Product";
+import { ProductsState } from "../interfaces/ProductsState";
 
 const API_URL = import.meta.env.VITE_API_URL as string;
 
@@ -12,12 +12,12 @@ const initialState: ProductsState = {
 };
 
 export const fetchProducts = createAsyncThunk<
-    Product[],
+    ProductCardProps[],
     void,
     { rejectValue: string }
 >("products/fetchProducts", async (_, { rejectWithValue }) => {
     try {
-        const response = await axios.get<Product[]>(API_URL);
+        const response = await axios.get<ProductCardProps[]>(API_URL);
 
         return response.data;
     } catch (error) {
@@ -37,7 +37,7 @@ const productsSlice = createSlice({
             })
             .addCase(
                 fetchProducts.fulfilled,
-                (state, action: PayloadAction<Product[]>) => {
+                (state, action: PayloadAction<ProductCardProps[]>) => {
                     state.status = "succeeded";
                     state.products = action.payload;
                 }

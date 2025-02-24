@@ -1,4 +1,4 @@
-import { ThemeState } from "../ts/interfaces/ThemeState";
+import { ThemeState } from "../interfaces/ThemeState";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState: ThemeState = {

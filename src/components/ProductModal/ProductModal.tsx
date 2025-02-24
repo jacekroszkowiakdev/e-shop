@@ -1,8 +1,8 @@
 import "./ProductModal.css";
-import { Product } from "../../ts/types/Product";
+import { ProductCardProps } from "../../interfaces/Product";
 
 interface ProductModalProps {
-    product: Product | null;
+    product: ProductCardProps | null;
     onClose: () => void;
 }
 
