@@ -3,7 +3,8 @@ import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { ProductCardProps } from "../interfaces/ProductCardProps";
 import { ProductsState } from "../interfaces/ProductsState";
 
-const API_URL = import.meta.env.VITE_API_URL as string;
+// const API_URL = import.meta.env.VITE_API_URL as string; // IMPORTANT: VITE configuration now using loadEnv for the purpose of Jest testing and allows to use process.env
+const API_URL = process.env.VITE_API_URL || "http://localhost:3000";
 
 const initialState: ProductsState = {
     products: [],
