@@ -13,7 +13,7 @@
         "allowSyntheticDefaultImports": true,
         "module": "ESNext",
         "moduleResolution": "Node",
-        "target": "ES2022",
+        "target": "ESNext",
         "resolveJsonModule": true,
         "noEmit": true,
         "allowImportingTsExtensions": true

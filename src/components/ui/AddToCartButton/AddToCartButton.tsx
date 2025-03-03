@@ -30,19 +30,25 @@ const AddToCartButton = ({
             {itemQuantity > 0 && (
                 <button
                     className="quantity-button"
+                    data-testid="decrease-button"
                     onClick={() => item && dispatch(decreaseQuantity(item.id))}
                 >
                     -
                 </button>
             )}
 
-            <button className="add-to-cart-button" onClick={handleClick}>
+            <button
+                className="add-to-cart-button"
+                data-testid="add-to-cart-button"
+                onClick={handleClick}
+            >
                 {itemQuantity}
             </button>
 
             {itemQuantity > 0 && (
                 <button
                     className="quantity-button"
+                    data-testid="increase-button"
                     onClick={() => item && dispatch(increaseQuantity(item.id))}
                 >
                     +

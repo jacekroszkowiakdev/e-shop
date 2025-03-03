@@ -23,11 +23,23 @@ const FavoriteButton = ({
     };
 
     return (
-        <button className="fav-button" onClick={handleClick}>
+        <button
+            className="fav-button"
+            onClick={handleClick}
+            data-testid="favorite-button"
+        >
             {liked ? (
-                <IoHeart size={size} color={likedColor} />
+                <IoHeart
+                    size={size}
+                    color={likedColor}
+                    data-testid="heart-filled"
+                />
             ) : (
-                <IoHeartOutline size={size} color={color} />
+                <IoHeartOutline
+                    size={size}
+                    color={color}
+                    data-testid="heart-outline"
+                />
             )}
         </button>
     );
